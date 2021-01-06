@@ -1,4 +1,5 @@
 #include "olcMFSG.h"
+#include "scenes/mainmenu.h"
 
 olcMFSG::olcMFSG()
 {
@@ -12,6 +13,8 @@ olcMFSG::~olcMFSG()
 
 bool olcMFSG::OnUserCreate()
 {
+	scenes.push_back(new MainMenu(0, this));
+	setActiveScene(scenes.front());
 	return true;
 }
 
