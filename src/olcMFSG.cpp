@@ -2,6 +2,7 @@
 #include "scenes/mainmenu.h"
 #include "scenes/noise.h"
 #include "scenes/life.h"
+#include "scenes/wormguy.h"
 
 olcMFSG::olcMFSG()
 {
@@ -18,6 +19,7 @@ bool olcMFSG::OnUserCreate()
 	scenes.push_back(new MainMenu(0, this));
 	scenes.push_back(new Noise(1, this));
 	scenes.push_back(new Life(2, this));
+	scenes.push_back(new WormGuy(3, this));
 	setActiveScene(scenes.front());
 	return true;
 }
