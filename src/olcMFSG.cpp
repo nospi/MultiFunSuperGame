@@ -64,3 +64,9 @@ std::vector<scene*>* olcMFSG::GetScenes()
 {
 	return &scenes;
 }
+
+void olcMFSG::DrawShadowedString(const olc::vi2d& pos, const olc::vi2d& offset, const std::string& text, olc::Pixel txtColour, olc::Pixel shadowColour, uint32_t scale)
+{
+	DrawString(pos + offset, text, shadowColour, scale);
+	DrawString(pos - (offset - olc::vi2d(1, 1)), text, txtColour, scale);
+}
