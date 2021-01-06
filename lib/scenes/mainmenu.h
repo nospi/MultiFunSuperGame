@@ -3,7 +3,7 @@
 class MainMenu : public scene
 {
 public:
-    MainMenu(int id, olcMFSG* game) : scene(id, "Main Menu", game) { }
+    MainMenu(int id, olcMFSG* game) : scene(id, "Multi Fun Super Game!", game) { }
 
     bool Create() override
     {
@@ -39,7 +39,7 @@ public:
         unsigned txtSize = 5U;
         olc::vi2d txtPos{ game->ScreenWidth() / 2, 30 + 4 * (int)txtSize };
         txtPos.x -= ((int)title.length() * 8 * txtSize) / 2;
-        game->DrawShadowedString(txtPos, olc::vi2d(3, 3), "Main Menu", olc::WHITE, olc::BLACK, txtSize);
+        game->DrawShadowedString(txtPos, olc::vi2d(3, 3), title, olc::WHITE, olc::BLACK, txtSize);
 
         // menu options
         olc::vi2d optionsTopCenter { game->ScreenWidth() / 2, game->ScreenHeight() / 3 };
