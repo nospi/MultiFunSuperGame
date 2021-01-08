@@ -7,12 +7,13 @@ Created with [olc::PixelGameEngine](https://github.com/OneLoneCoder/olcPixelGame
 
 ## Included games
 - Analogue TV Noise Emulator
+- Matrix Rain
 - Conway's Game of Life
 - WormGuy
 
 ## Proposed Minigames
-- Matrix Rain
-- Pong
+- Boids
+- PaddleBall
 - Flappy Bird
 
 # Dependencies
