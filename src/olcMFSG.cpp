@@ -39,6 +39,8 @@ bool olcMFSG::OnUserUpdate(float fElapsedTime)
 
 bool olcMFSG::OnUserDestroy()
 {
+	for (auto& scene : scenes)
+		delete scene;
 	return true;
 }
 
