@@ -6,12 +6,13 @@ various mini-games.
 Created with [olc::PixelGameEngine](https://github.com/OneLoneCoder/olcPixelGameEngine)
 
 ## Included games
-- None yet
+- Analogue TV Noise Emulator
+- Conway's Game of Life
+- WormGuy
 
 ## Proposed Minigames
-- Snake
+- Matrix Rain
 - Pong
-- Conway's Game of Life
 - Flappy Bird
 
 # Dependencies
