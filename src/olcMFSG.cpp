@@ -4,6 +4,7 @@
 #include "scenes/life.h"
 #include "scenes/wormguy.h"
 #include "scenes/matrix.h"
+#include "scenes/boids.h"
 
 olcMFSG::olcMFSG()
 {
@@ -20,8 +21,9 @@ bool olcMFSG::OnUserCreate()
 	scenes.push_back(new MainMenu(0, this));
 	scenes.push_back(new Noise(1, this));
 	scenes.push_back(new Matrix(2, this));
-	scenes.push_back(new Life(3, this));
-	scenes.push_back(new WormGuy(4, this));
+	scenes.push_back(new Boids(3, this));
+	scenes.push_back(new Life(4, this));
+	scenes.push_back(new WormGuy(5, this));
 	setActiveScene(scenes.front());
 	return true;
 }
