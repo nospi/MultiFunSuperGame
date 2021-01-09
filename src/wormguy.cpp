@@ -8,7 +8,7 @@ WormGuy::WormGuy(int id, olcMFSG* game) : scene(id, "WormGuy", game) {}
 bool WormGuy::Create()
 {
     // initialise starting values
-    mTimeStep = 0.1f;
+    mTimeStep = 0.085f;
     mTimeAccumulator = 0.0f;
     mHasMoved = false;
     mScore = 0;
@@ -23,7 +23,7 @@ bool WormGuy::Create()
     mWormGuy.push_back(pos);
 
     // create starting body
-    for (int i = 1; i < 5; i++)
+    for (int i = 1; i < 8; i++)
         mWormGuy.emplace_back(pos.x - i, pos.y);
 
     // determine starting direction
@@ -79,25 +79,30 @@ bool WormGuy::Update(float fElapsedTime)
         {
             mTimeAccumulator -= mTimeStep;
 
-            // move wormguy
-            for (int i = mWormGuy.size() - 1; i > 0; i--)
-                mWormGuy[i] = mWormGuy[i - 1];
-            mWormGuy[0] += mDirection;
-
-            // check for food collisions
-            if (mWormGuy.front() == mFood)
-                score();
+            // future pos
+            olc::vf2d vNextHead = mWormGuy.front() + mDirection;
 
             // body collisions
             for (auto& cell : mWormGuy)
                 if (&cell != &mWormGuy.front())
-                    if (cell == mWormGuy.front())
+                    if (cell == vNextHead)
                         mGameOver = true;
             
             // wall collisions
-            olc::vi2d head = mWormGuy.front();
-            if (head.x < 0 || head.x >= game->ScreenWidth() / CellSize || head.y < 0 || head.y >= game->ScreenHeight() / CellSize)
+            if (vNextHead.x < 0 || vNextHead.x >= game->ScreenWidth() / CellSize || vNextHead.y < 0 || vNextHead.y >= game->ScreenHeight() / CellSize)
                 mGameOver = true;
+
+            if (!mGameOver)
+            {
+                // move wormguy
+                for (int i = mWormGuy.size() - 1; i > 0; i--)
+                    mWormGuy[i] = mWormGuy[i - 1];
+                mWormGuy[0] += mDirection;
+
+                // check for food collisions
+                if (mWormGuy.front() == mFood)
+                    score();
+            }
             
             mHasMoved = false;
         }
@@ -144,6 +149,8 @@ void WormGuy::score()
     // append new tail pos
     olc::vi2d pos = mWormGuy.back();
     olc::vi2d dir = mWormGuy[mWormGuy.size() - 2] - mWormGuy.back();
+    pos += dir;
+    mWormGuy.push_back(pos);
     pos += dir;
     mWormGuy.push_back(pos);
 
