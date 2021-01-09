@@ -4,9 +4,10 @@ PauseMenu::PauseMenu() {}
 
 bool PauseMenu::Create(scene* scene, olcMFSG* game)
 {
+    mGame = game;
     mScene = scene;
     mBounds.size = { 320, 240 };
-    mBounds.position = { (game->ScreenWidth() >> 1) - 160, (game->ScreenHeight() >> 1) - 120 };
+    mBounds.position = { (mGame->ScreenWidth() >> 1) - 160, (mGame->ScreenHeight() >> 1) - 120 };
 
     olc::vi2d vBtnSize = { 300, 40 };
     olc::vi2d vBtnOffset = { 10, 90 };
@@ -24,15 +25,15 @@ bool PauseMenu::Create(scene* scene, olcMFSG* game)
     return true;
 }
 
-bool PauseMenu::Process(float fElapsedTime, olcMFSG* game)
+bool PauseMenu::Process(float fElapsedTime)
 {
     // bail out early if the menu is not enabled
     if (!mEnabled) return !bShouldExit;
 
     // handle button clicks
-    if (game->GetMouse(0).bPressed)
+    if (mGame->GetMouse(0).bPressed)
         for (auto& btn : mButtons)
-            if (btn.bounds.contains(game->GetMousePos()))
+            if (btn.bounds.contains(mGame->GetMousePos()))
             {
                 btn.onClick();
                 break;
@@ -46,10 +47,10 @@ bool PauseMenu::Process(float fElapsedTime, olcMFSG* game)
     vPos.y = mBounds.position.y + 8 * scale;
 
     // draw
-    game->FillRect(mBounds.position, mBounds.size, mBGColour);
-    game->DrawShadowedString(vPos, { 2, 2 }, sTitle, olc::WHITE, olc::BLACK, scale);
+    mGame->FillRect(mBounds.position, mBounds.size, mBGColour);
+    mGame->DrawShadowedString(vPos, { 2, 2 }, sTitle, olc::WHITE, olc::BLACK, scale);
     for (auto& btn : mButtons)
-        btn.DrawSelf(mScene->game);
+        btn.DrawSelf(mGame);
 
     // handle scene exit - need to find a nicer way to do this
     if (bShouldExit)

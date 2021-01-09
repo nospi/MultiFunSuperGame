@@ -90,7 +90,7 @@ bool Life::Update(float fElapsedTime)
     game->DrawShadowedString({ 10, 42 }, { 1, 1 }, "Time Step: " + std::to_string(mTimeStep * 1000.0f) + "ms", olc::WHITE, olc::BLACK, 1U);
     game->DrawShadowedString({ 10, 58 }, { 1, 1 }, "Ticks/Sec: " + std::to_string(1.0f / mTimeStep), olc::WHITE, olc::BLACK, 1U);
 
-    if (!mPauseMenu.Process(fElapsedTime, this->game))
+    if (!mPauseMenu.Process(fElapsedTime))
     {
         mPauseMenu.bShouldExit = false;
         return false;

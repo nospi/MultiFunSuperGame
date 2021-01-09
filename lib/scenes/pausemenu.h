@@ -14,7 +14,7 @@ public:
     inline bool Toggle() { mEnabled = !mEnabled; return mEnabled; }
     inline bool Enabled() const { return mEnabled; }
     bool Create(scene*, olcMFSG*);
-    bool Process(float, olcMFSG*);
+    bool Process(float);
     
     bool bShouldExit = false;
     scene* mScene;
@@ -23,6 +23,7 @@ public:
     std::vector<Button> mButtons;
 
 private:
+    olcMFSG* mGame = nullptr;
     bool mEnabled = false;
     rect<olc::vi2d> mBounds;
     olc::Pixel mBGColour = olc::DARK_GREY;

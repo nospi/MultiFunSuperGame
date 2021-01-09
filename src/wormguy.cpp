@@ -120,7 +120,7 @@ bool WormGuy::Update(float fElapsedTime)
     }
 
     // pause menu
-    if (!mPauseMenu.Process(fElapsedTime, game))
+    if (!mPauseMenu.Process(fElapsedTime))
         return false;
 
     return true;
