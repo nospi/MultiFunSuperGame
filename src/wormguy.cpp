@@ -124,11 +124,7 @@ bool WormGuy::Update(float fElapsedTime)
         game->DrawShadowedString(pos, { 3, 3 }, sGameOver, olc::YELLOW, olc::RED, 4U);
     }
 
-    // pause menu
-    if (!mPauseMenu.Process(fElapsedTime))
-        return false;
-
-    return true;
+    return mPauseMenu.Process(fElapsedTime);
 }
 
 bool WormGuy::Destroy()

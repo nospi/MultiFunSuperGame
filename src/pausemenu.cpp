@@ -27,8 +27,15 @@ bool PauseMenu::Create(scene* scene, olcMFSG* game)
 
 bool PauseMenu::Process(float fElapsedTime)
 {
+    // handle scene exit - need to find a nicer way to do this
+    if (bShouldExit)
+    {
+        bShouldExit = false;
+        return false;
+    }
+
     // bail out early if the menu is not enabled
-    if (!mEnabled) return !bShouldExit;
+    if (!mEnabled) return true;
 
     // handle button clicks
     if (mGame->GetMouse(0).bPressed)
@@ -51,13 +58,6 @@ bool PauseMenu::Process(float fElapsedTime)
     mGame->DrawShadowedString(vPos, { 2, 2 }, sTitle, olc::WHITE, olc::BLACK, scale);
     for (auto& btn : mButtons)
         btn.DrawSelf(mGame);
-
-    // handle scene exit - need to find a nicer way to do this
-    if (bShouldExit)
-    {
-        bShouldExit = false;
-        return false;
-    }
 
     return true;
 }
