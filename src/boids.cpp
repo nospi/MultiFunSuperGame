@@ -43,7 +43,7 @@ struct sBoid
         // determine neighbours within field of view
         float fMaxRadius = std::max(std::max(Boids::Radius_Separation, Boids::Radius_Cohesion), Boids::Radius_Alignment);
         std::vector<sBoid> neighbours;
-        sCircle cFOV(transform.position, fMaxRadius);
+        circle cFOV(transform.position, fMaxRadius);
         for (auto& b : vBoids)
         {
             if (cFOV.contains(b.transform.position))
