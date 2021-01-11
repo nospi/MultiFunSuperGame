@@ -18,7 +18,7 @@ float distanceSqd(const olc::vf2d&a, const olc::vf2d& b)
 struct sBoid
 {
     int id = -1;
-    transform transform;
+    mfsg::transform transform;
     olc::vf2d velocity{0.0f, 0.0f};
     olc::Pixel colour = olc::YELLOW;
     bool isPerching;
