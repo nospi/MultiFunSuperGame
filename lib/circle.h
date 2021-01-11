@@ -9,6 +9,8 @@ struct circle
     olc::vf2d center;
     float radius;
 
+    circle() : center(0.0f, 0.0f), radius(1.0f) {}
+
     circle(const olc::vf2d& center, const float& radius) : center(center), radius(radius) {}
 
     bool contains(const olc::vf2d& point)
