@@ -8,6 +8,7 @@
 #include "scenes/paddleball.h"
 #include "scenes/tictactoe.h"
 #include "scenes/spaceguns.h"
+#include "scenes/mazes.h"
 
 
 olcMFSG::olcMFSG()
@@ -23,7 +24,8 @@ olcMFSG::~olcMFSG()
 bool olcMFSG::OnUserCreate()
 {
 	scenes.push_back(new MainMenu(0, this));
-	scenes.push_back(new Noise(1, this));
+	scenes.push_back(new Mazes(1, this));
+	// scenes.push_back(new Noise(1, this));
 	scenes.push_back(new Matrix(2, this));
 	scenes.push_back(new Boids(3, this));
 	scenes.push_back(new Life(4, this));

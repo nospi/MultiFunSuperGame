@@ -1,19 +1,25 @@
 # MultiFunSuperGame!
 An attempt at housing several small games within one application,
 and handling the seperation of and navigation between these
-various mini-games.
+various mini-games. Includes several zero-player games as they present
+an opportunity to simulate various phenomena with simple algorithms.
 
 Created with [olc::PixelGameEngine](https://github.com/OneLoneCoder/olcPixelGameEngine)
 
 ## Included games
-- Analogue TV Noise Emulator
+- ~~Analogue TV Noise Emulator~~
 - Matrix Rain
 - Conway's Game of Life
 - WormGuy
-
-## Proposed Minigames
+- Maze Generator/Solver
 - Boids
 - PaddleBall
+- SpaceGuns
+- Noughts N' Crosses
+
+## Proposed Minigames
+- Platforma
+- Tetris
 - Flappy Bird
 
 # Dependencies
