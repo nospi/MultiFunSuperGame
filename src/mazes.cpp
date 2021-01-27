@@ -46,10 +46,13 @@ bool Mazes::Create()
     nCols = game->ScreenWidth() / nCellWidth - 2;
     nRows = game->ScreenHeight() / nCellHeight - 2;
 
+    vMaze.clear();
     for (int y = 0; y < nRows; y++)
         for (int x = 0; x < nCols; x++)
             vMaze.emplace_back(x, y);
-    
+
+    nodes = new node[nRows * nCols];
+
     generate({ 0, 0 });
 
     return true;
@@ -78,9 +81,7 @@ bool Mazes::Update(float fElapsedTime)
 
     case ASTAR_SOLVE:
         if (game->GetKey(olc::SPACE).bPressed)
-        {
             generate({ 0, 0 });
-        }
         break;
 
     case PLAYER_SOLVE: 
@@ -206,14 +207,19 @@ void Mazes::generate(olc::vi2d starting_pos)
     auto t_g2 = hrc::now();
     auto t_s1 = hrc::now();
 
-    // cleanup existing nodes if they exist
-    if (nodes != nullptr)
-        delete[] nodes;
+    // (re)initialise nodes
+    for (int i = 0; i < nCols * nRows; i++)
+    {
+        nodes[i].visited = false;
+        nodes[i].obstacle = false;
+        nodes[i].localGoal = INFINITY;
+        nodes[i].globalGoal = INFINITY;
+        nodes[i].neighbours.clear();
+        nodes[i].parent = nullptr;
+    }
     
     auto getNodePtr = [&](int x, int y){ return &nodes[y * nCols + x]; };
 
-    // initialise list of nodes to match mazeCells
-    nodes = new node[vMaze.size()];
     int i = 0;
     for (auto& mc : vMaze)
     {
