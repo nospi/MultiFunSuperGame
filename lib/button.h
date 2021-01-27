@@ -21,4 +21,6 @@ struct Button
 
 Button CreateMenuButton(const std::string&, rect<olc::vi2d>, std::function<void(void)>);
 
+Button CreateLoadSceneButton(scene* scn, rect<olc::vi2d> bounds, olcMFSG* game);
+
 #endif /* BUTTON_H */
