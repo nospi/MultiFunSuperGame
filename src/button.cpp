@@ -29,3 +29,18 @@ Button CreateMenuButton(const std::string& label, rect<olc::vi2d> bounds, std::f
 
     return b;
 }
+
+Button CreateLoadSceneButton(scene* scn, rect<olc::vi2d> bounds, olcMFSG* game)
+{
+    Button b;
+    b.sLabel = scn->title;
+    b.bounds = bounds;
+    b.onClick = [game, scn](){ game->LoadScene(scn->id); };
+    
+    b.bgColour = { 75, 75, 75, 255 };
+    b.fgColour = olc::WHITE;
+    b.shadowColour = olc::BLACK;
+    b.txtScale = 2U;
+
+    return b;
+}
