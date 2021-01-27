@@ -7,7 +7,6 @@ an opportunity to simulate various phenomena with simple algorithms.
 Created with [olc::PixelGameEngine](https://github.com/OneLoneCoder/olcPixelGameEngine)
 
 ## Included games
-- ~~Analogue TV Noise Emulator~~
 - Matrix Rain
 - Conway's Game of Life
 - WormGuy
@@ -16,6 +15,7 @@ Created with [olc::PixelGameEngine](https://github.com/OneLoneCoder/olcPixelGame
 - PaddleBall
 - SpaceGuns
 - Noughts N' Crosses
+- MineSweeper
 
 ## Proposed Minigames
 - Platforma

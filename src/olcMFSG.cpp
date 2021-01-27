@@ -9,6 +9,7 @@
 #include "scenes/tictactoe.h"
 #include "scenes/spaceguns.h"
 #include "scenes/mazes.h"
+#include "scenes/minesweeper.h"
 
 
 olcMFSG::olcMFSG()
@@ -33,6 +34,7 @@ bool olcMFSG::OnUserCreate()
 	scenes.push_back(new PaddleBall(6, this));
 	scenes.push_back(new TicTacToe(7, this));
 	scenes.push_back(new SpaceGuns(8, this));
+	scenes.push_back(new MineSweeper(9, this));
 	setActiveScene(scenes.front());
 	return true;
 }
